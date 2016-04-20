@@ -1,0 +1,47 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.wrapper {
+	width: 650px;
+	height: auto;
+	// margin: 0 auto;
+}
+
+
+
+.icon (@i, @hpos, @vpos, @hstep, @vstep, @url, @hstart) when (@hpos > -450px) {
+	.icon-@{i} {
+		background: url(@url) @hpos @vpos;
+		width: 50px;
+		height: 50px;
+		border: 5px solid purple;
+		display: inline-block;
+	}	
+
+//где @i - переменная для числового суффикса селектора icon
+// //@hpos - переменная для горизонтальной позиции, т.е. по оси Х
+// //@vpos - переменная для вертикальной позиции, т.е. по оси У
+// //@hstep, @vstep - переменные для шага (в пикселях) по оси Х и оси У
+// //@url - переменная для ссылки на спрайт
+// //@hstart - переменная для старта с указанной при вызове миксина позиции
+// //условие цикла начнет действовать при условии, что горизонт. позиция больше -450px;
+
+	.icon(@i + 1, @hpos + @hstep, @vpos, @hstep, @vstep, @url, @hstart);
+}
+
+.icon (@i, @hpos, @vpos, @hstep, @vstep, @url, @hstart) when (@hpos = -450px) and (@vpos > -200px) {
+	.icon-@{i} {
+		background: url(@url) @hpos @vpos;
+		width: 50px;
+		height: 50px;
+		border: 5px solid gold; /*этот цвет поможет продемонстрировать
+		срабатывание условия LESS цикла в данном миксине и возврат к прежнему
+		миксину*/
+		display: inline-block;
+	}	
+	.icon(@i + 1, @hstart, @vpos + @vstep, @hstep, @vstep, @url, @hstart);
+}
+
+.icon(1, 0px, 0px, -50px, -50px, "sprite.png", 0px);
