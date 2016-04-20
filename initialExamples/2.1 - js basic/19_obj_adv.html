@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+        JavaScript object advanced
+        </title>
+		<script>
+            //ES5.1 and below
+            Object.create(Array.prototype);
+            Object.defineProperties({}, {'prop1' : {
+                value: null,
+                configurable:false,
+                enumerable:false
+            })
+            Object.defineProperties({}, {'prop1' : {
+                value: null,
+                configurable:false,
+                enumerable:false
+            })
+            a = Object.defineProperties({}, {'prop1' : {
+                            value: null,
+                            configurable:false,
+                            enumerable:false,
+                            writable: false
+                        }});
+
+            for (var i in a) {console.log(i)}
+                
+            a.prop2 = "simpleprop"
+            
+            for (var i in a) {console.log(i)}        
+            
+            console.log(a.propertyIsEnumerable("prop1"));
+            console.log(a.propertyIsEnumerable("prop2"));
+            
+            delete a.prop1;
+            delete a.prop2;
+            
+            Object.create(String.prototype, {"prop1": {value: "hello"}});
+		</script>
+	</head>
+	<body>
+	Press F12 to open DevTools
+	</body>
+</html>

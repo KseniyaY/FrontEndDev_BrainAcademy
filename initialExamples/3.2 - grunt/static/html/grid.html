@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Grid</title>
+		<style>
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			.container {
+				width:80%;
+				height:1200px;
+				margin: 40px auto;
+				background-color: green;
+				padding: 10px;
+			}
+
+			.element {
+				background-color: white;
+				display: inline-block;
+				position: relative;
+				margin: 5px;
+			}
+			
+			.small {
+				height: 150px;
+			}
+
+			.short {				
+				width: 150px;
+			}
+
+			.tall {
+				height: 300px;
+			}
+
+			.long {
+				width: 300px;
+			}
+
+			.row {
+				float: left;
+			}
+
+			.col {
+				display: inline-block;
+				height: 150px;								
+			}
+
+			.col div {
+				position: absolute;
+			}
+
+			.holder {
+				float: right;
+			}
+
+			.hld {
+				position: static;
+				vertical-align: bottom;
+				margin-top: 300px;
+			}
+	
+			.incol_el {
+				background-color: white;
+			}
+
+			.up-1 {
+				
+			}
+
+			.top-150 {
+				top: -150px;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div class="container" id="container"> 
+				<div class="element small short"></div>
+				<div class="element small long"></div>	
+				<div class="element tall long"></div>
+				<div class="element tall long"></div>
+				<div class="element short tall"></div>
+				<div class="element long tall "></div>	
+
+		</div>
+
+		<script type="text/javascript">
+			var elements = document.getElementsByClassName('element');
+			var container = document.getElementById('container');
+			var widthAggr = 0;
+			var i;
+			var rows = [[]];
+			var rowID = 0;
+			var moveTopWidth = 0;
+
+			for (i = 0; i<elements.length; i++) {
+				if (elements[i].clientWidth + widthAggr < container.clientWidth) {
+					widthAggr += elements[i].clientWidth
+					if (!rows[rowID]) {
+						rows[rowID] = [];
+					}
+					rows[rowID].push(elements[i]);					
+				} else {
+					widthAggr = 0;
+					rowID++;
+					rows[rowID] = [elements[i]];
+				}
+			}
+			console.log(rows);
+			rows.forEach(function (row, i) {
+				var i
+				var maxHeight = 0;
+				var moveWidth = 0;
+				row.forEach(function(el) {
+					if (el.clientHeight > maxHeight) {
+						maxHeight = el.clientHeight 
+					}
+				});
+				row.forEach(function(el) {
+					if (el.clientHeight < maxHeight) {
+						el.move = {
+							top: maxHeight - el.clientHeight
+						}
+						el.isMove = true;
+						moveWidth += el.clientWidth;
+						if (rows[i+1]) {
+							rows[i+1].forEach(function (rEl) {
+								if (rEl.clientWidth <= moveWidth) {
+									if (rEl.isMove && rEl.move.top) {
+										rEl.move.top = rEl.move.top + el.move.top;
+									} else {
+										rEl.move = {
+											top: maxHeight - el.clientHeight
+										}
+										rEl.isMove = true;
+									}
+									moveWidth -= rEl.clientWidth;
+								}
+							});
+						}
+					} else {
+						moveWidth = 0;
+					}
+				});
+
+			});
+			Array.prototype.forEach.call(elements, function(el) {
+				if (el.isMove) {
+					el.classList.add('top-' + el.move.top)
+				}
+			});
+
+		</script>
+	</body>
+</html>

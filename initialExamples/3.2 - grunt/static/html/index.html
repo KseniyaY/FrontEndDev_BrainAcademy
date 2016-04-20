@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Training demo</title>
+      
+       
+    <!-- Bootstrap -->
+      <!-- include: "type": "css", "files": "css/*.css" -->
+      <!-- include: "type": "js", "files": "js/modules/*.js" -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div class="contaner-fluid">
+  <div class="row">
+    <div class="col-xs-3 col-md-2"></div>
+    <div id="bodycontainer" class="col-xs-12 col-md-8">
+      <div class="centerblock">
+        <div>
+          <h1 class="text-center">DATA TABLE</h1>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table">
+            <tbody id="datatable" class="table-hover"></tbody>
+          </table>
+        </div>
+
+        <div class="get formgroup form-inline">
+          <button type="button" id="get" class="btn btn-default">Get data</button>  
+          <label for="pagesize">Page length</label>
+          <select id="pagesize" class="form-control">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+          </select>  
+          <div id="pagesblock"></div>
+        </div>
+        
+        <label for="addDataName">Key</label>
+        <input type="text" id="addDataName" class="form-control" placeholder="Enter key">
+        <label for="addDataValue">Value</label>
+        <input type="text" id="addDataValue" class="form-control" placeholder="Enter value">
+        <button id="send" class="btn btn-default">Send data</button> 
+
+      </div> 
+    </div>
+    <div class="col-xs-3 col-md-2"></div>
+  </div>
+  </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- include: "type": "js", "files": "js/*.js" -->
+  </body>
+</html>
+ 

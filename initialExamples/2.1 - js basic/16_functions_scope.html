@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript function scope</title>
+		<script>
+		var cache = [];
+		function fib (n) {
+			if (n === 0) return n;
+			if (n === 1) return n;
+			return fib(n-2)+fib(n-1);
+		}
+
+		function fibCache (n) {
+			if (cache[n]) return cache[n];
+			if (n === 0) return cache[n] = n;
+			if (n === 1) return cache[n] = n;				
+			return cache[n] = fibCache(n-2)+fibCache(n-1);
+		}
+
+		</script>
+	</head>
+	<body>
+	<br>Press F12 to open DevTools
+	</body>
+</html>

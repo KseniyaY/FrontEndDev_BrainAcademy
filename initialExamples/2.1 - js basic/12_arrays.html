@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript arrays</title>
+		<script>
+		var arr = [],
+			arr2 = [],
+			maxJ = 2,
+			m = 0,
+			n = 0;
+
+			for (var i = 0; i < 9; i++) {
+				arr[i] = Math.round(Math.random() * 1000);
+			}
+
+			for (var i = 0; i<arr.length; i++) {
+				var min = arr[i];
+				for (var j = i; j < arr.length; j++) {
+					if (arr[j] < min) {
+						min = arr[j];
+						arr[j] = arr[i];
+					}
+				}
+				arr[i] = min;
+			}
+
+			console.log(arr);
+
+			for (var i in arr) {
+				if (m === 0) {
+					arr2[n] = [];
+				}
+				arr2[n][m] = arr[i];
+				if (m === maxJ) {
+					m = 0;
+					n++;
+				} else {
+					m++;
+				}
+			}
+			console.log(arr2);
+
+
+		</script>
+	</head>
+	<body>
+	<br>Press F12 to open DevTools
+	</body>
+</html>

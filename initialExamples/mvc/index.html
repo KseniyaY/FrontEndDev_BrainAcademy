@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Blog</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>JSON</title>
+    <script data-main="js/app/main" src="js/lib/require.js"></script>
+    <style type="text/css">
+    .post {
+      margin: 10px;
+    }
+    .hidden {
+    	display: none;
+    }
+    .post_header {
+    		height: 60px;
+    }
+    .comment_del {
+      float: right;
+    }
+    .comment {
+      padding: 10px;
+      margin: 10px;
+      position: relative;
+    }
+    .comment_body {
+      display: inline-block;
+    }
+
+    .post_newcomment-input {
+      width: 180px !important;
+    }
+
+    .post_comments {
+      clear:both;
+    }
+    .post_body {
+    	background: #bbb;
+    }
+    .post_body--update {
+    	background: green;
+    }
+    .post_body--focus {
+    	background: #eee;
+    	outline: none;
+    }
+    .post_header, .post_body {
+    	border: 1px solid black;    
+      padding: 10px;
+    }
+    .post_delete {
+        float: right;
+    }
+    .comment {
+      margin: 5px 15px;      
+    }
+    .post_toggle {
+      width: 20px;
+      text-align: center;
+      float: left;
+    }    
+    .comment {
+      margin: 5px 15px;      
+    }
+    .newpost {
+      padding: 15px;
+    }
+    .post_newcomment {
+      margin: 10px;
+      padding: 10px;
+    }
+        
+    </style>
+  </head>
+  <body>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <div id="container" class="row"></div>
+          </div>
+          <div class="col-lg-6">
+            <div id="container2" class="row"></div>
+          </div>
+        </div>
+      </div>      
+  </body>
+</html>

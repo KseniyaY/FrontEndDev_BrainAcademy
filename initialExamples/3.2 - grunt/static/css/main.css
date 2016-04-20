@@ -1,0 +1,43 @@
+body {
+  background-color: #eee;
+}
+#datatable {
+  border-top: 2px solid #000;
+}
+#datatable tr td {
+  padding: 5px;
+}
+#datatable tr:nth-child(2n) {
+  background-color: #6A8CAD;
+}
+#datatable tr:nth-child(2n+1) {
+  background-color: #AEC5DA;
+}
+#datatable tr td:first-child {
+  text-transform: capitalize;
+  font-family: Serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-right: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+#pagesblock {
+  display: inline-block;
+}
+#pagesblock a,
+#pagesblock span {
+  margin: 5px;
+  font-size: 16px;
+}
+#datatable tr td:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.get {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+#send {
+  margin-top: 10px;
+}

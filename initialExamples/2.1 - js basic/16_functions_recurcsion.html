@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript function recursion</title>
+		<script>
+		var cache = [];
+		function fib(n) {
+			if (n == 0) return 0;
+			if (n == 1) return 1;
+		 	return fib(n-1) + fib(n-2);
+		}
+
+		console.log(fib(10));
+
+		function fibCache(n) {
+			if (cache[n]) return cache[n];			
+			if (n == 0) return cache[n] = 0;
+			if (n == 1) return cache[n] = 1;			
+		 	return cache[n] = fib(n-1) + fib(n-2);
+		}
+
+		console.log(fibCache(10));
+
+
+		</script>
+	</head>
+	<body>
+	<br>Press F12 to open DevTools
+	</body>
+</html>

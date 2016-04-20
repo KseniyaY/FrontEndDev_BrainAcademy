@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript function scope</title>
+		<script>
+		function multiarg (arg1) {
+			console.log(arg1);
+			if (arguments.length > 1) {
+				console.log(arguments);
+			}
+		}
+
+		multiarg(10);
+		multiarg(10, 20, 30, "@@@@@");
+
+
+		</script>
+	</head>
+	<body>
+	<br>Press F12 to open DevTools
+	</body>
+</html>

@@ -1,0 +1,74 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<title>Forms</title>
+	</head>
+	<body>
+		<h1>Form</h1>
+		<form>
+			<fieldset>				
+				<label>Range: <input type="range" id="range"></label><br>
+			</fieldset>
+
+			<label><input type="radio" name="radio" value="plus">+</label>
+				<label><input type="radio" name="radio" value="minus" checked="true">-</label>
+				<br>
+
+			<input type="number" id="num1">
+			<span id="op"></span>
+			<input type="number" id="num2">			
+			<span> = </span>
+			<span id="result"></span>
+		</form>		
+		<script type="text/javascript">
+		var range = document.getElementById("range");
+
+		var value,
+			result = document.getElementById("result"),
+			radios = document.getElementsByName("radio"),
+			number1 = document.getElementById("num1"),
+			number2 = document.getElementById("num2"), 
+		calculations = {
+			plus: function (a, b) {
+				return a + b;
+			},
+			minus: function (a, b) {
+				return a - b;
+			}
+		};
+
+		// function getValue() {
+		// 	var currValue;
+		// 	for (var i = 0; i < radios.length; i++) {
+		// 		currValue = radios[i].checked ? radios[i].value : currValue;
+		// 	}
+		// 	return currValue;
+		// }
+
+		function calculate (e) {		
+			result.innerHTML = calculations[value](parseInt(number1.value), parseInt(number2.value));		
+		}
+
+		function setValue () {
+			if (this.checked) {
+				value = this.value;
+				op.innerHTML = this.parentElement.textContent;
+				calculate();
+			}
+		}
+
+		for (var i = 0; i < radios.length; i++) {
+				setValue.call(radios[i]);
+				radios[i].addEventListener("change", setValue);
+			}
+
+		number1.addEventListener("change", calculate);
+		number2.addEventListener("change", calculate);
+
+		range.addEventListener("change", function (e) {
+			console.log(e);
+			document.getElementsByTagName("form")[0].style.fontSize = this.value + "px";
+		});
+		</script>
+	</body>
+</html>
