@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cars</title>
+</head>
+<body>
+<p id="type"></p>
+<p id="assortment"></p>
+<p id="filter"></p>
+<script>
+// Write code to create an array of 5 Cars
+// Car has following properties:
+// FirmName (string)
+// ModelName (string)
+// EngineDisplacement (float)
+// All parameters to prompt by user
+// Output all Cars that has Engine Displacement > 2.0
+
+var cars = []; //инициализируем переменную
+
+//описываем функцию для наполнения массива
+function createCars() {
+	var i=0; //инициализируем переменную счетчика для цикла, который будет наполнять наш массив объектами со свойствами и значениями в виде информации об автомобилях
+
+	var stop; //декларируем переменную, которая остановит цикл заполнения массива элементами, если пользователь больше не захочет вводить информацию 
+	//в следующем цикле for счетчик итераций ограничен 5 элементами (первый элемент записывает в индекс с 0, потому 4-й индекс - это уже пятый элемент) или действием пользователя, которое сохранено в переменную stop
+	for(;i<=4 && i!=stop;) {
+		//методом push() добавляем в конец массива объект (в фигурных скобках), значения (через двоеточие), свойствам которых пользователь введет самостоятельно через окошко вызываемое методом prompt().
+		cars.push({
+			firmName: prompt("Input a brand of a car"),
+			modelName: prompt("Input a model of a car"),
+			engineDisplacement: parseFloat(prompt("Input the engine capacity of a car"))
+		});
+		//остановкой цикла будет считаться равенство переменной значению true, которое передастся, если пользователь подтвердит свое желание уйти через кнопку "ОК" в окошке, вызванном методом confirm(). Цикл прервется, пользователь увидит информационное сообщение, но вся введенная информация, сохраненная в объекты массива, выведется в HTML документ
+		stop = confirm("You should input properties of 5 cars, but if you have no enough time anymore, you can leave");
+		if(stop==true){
+				alert("Thank you for being with us! Bye!");
+				document.write(cars[i].firmName + " " + cars[i].modelName + " " + cars[i].engineDisplacement + "<br>"+"<br>");	
+				break;
+			}
+	//если цикл не прерывается действием пользователя, то каждая итерация будет добавлять введенную информацию в документ, пока массив не наполнится 5-ю объектами/элементами		
+	document.write(cars[i].firmName + " " + cars[i].modelName + " " + cars[i].engineDisplacement + "<br>"+"<br>");		
+	i++;		
+	}
+	// return cars; //указываем функции, что она должна вернуть массив перед ее завершением
+}	
+
+
+createCars();
+document.getElementById("assortment").innerHTML = cars; //почему не выводятся значения свойств объектов?
+
+//Дополнительная переменная, в которую записываются метод filter(), применяемый к нашему готовому массиву с объектами. В качестве аргумента функция для фильтрации объектов (авто) по свойству объема двигателя
+// 
+var carsFiltered = []; //переменная для нового массива, в который будет сохраняться объекты, отфильтрованные по свойству объема двигателя более 2л.
+//отбор по свойству будет проходить с помощью метода filter(), применяемого к исходному массиву. Аргументом метода является функция, которая несет в себе условие отбора и действие, производимое, если элемент возвращает значение true. В нашем случае, мы будем выводить в HTML информацию об объекте, определенное свойство которого удовлетворяет условию функции
+
+document.write("Cars with the engine capacity of 2.0 and over: " + "<br>");
+carsFiltered = cars.filter(function(cars) { 
+		if (cars.engineDisplacement > 2.0) {
+			document.write(cars.firmName + " " + cars.modelName + " " + cars.engineDisplacement + "<br>");
+		}
+});
+
+
+// function carFilter() {
+// 	if (cars[i].engineDisplacement > 2.0)  {
+//		carsFiltered.push({
+// 			carsFiltered.firmName: ,
+// 			carsFiltered.modelName: ,
+// 			carsFiltered.engineDisplacement: 
+// 		});
+// 		document.write(carsFiltered[i].firmName + " " + carsFiltered[i].modelName + " " + carsFiltered[i].engineDisplacement + "<br>");
+//     	}
+// 	else {		
+// 		alert("There are no cars with engine capacity of 2.0 and over");
+// 	}
+// 	return carsFiltered;	
+// }	
+
+// carFilter();
+
+
+//Способ 2:
+// var cars = [];
+//    for(var i = 0; i < 5; i++) {
+//    cars.push({
+//     FirmName: prompt("Enter car's name."),
+//     ModelName: prompt("Enter car's model."),
+//     EngineDisplacement: parseFloat(prompt("Enter car's engine displacement"))
+//    });
+//прописываем условия для выведения в HTML документ лишь тех моделей, которые соответствуют условию отбора по объему двигателя
+//    if (cars[i].EngineDisplacement > 2.0) {
+//     document.write("Car's name: " + cars[i].FirmName + "</br>" + " Car's model: " + cars[i].ModelName + "</br>" + " Car's engine displacement: " + cars[i].EngineDisplacement + "</br>" + "</br>");
+//    }   
+//    }
+
+</script>
+	
+</body>
+</html>

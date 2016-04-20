@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Build a class constructor to create the same post by every click</title>
+    <meta charset="utf-8">
+     <style type="text/css">
+    .hidden {
+      display: none;
+    }
+    .post_header {
+      border: 1px solid black;      
+    }
+    .post_body {
+      background: #666;
+    }
+    </style>
+    
+  </head>
+  <body>
+        <button id="create">Click me</button>
+        <script>
+          var button = document.getElementById("create");
+          var CreateByClick = function (title, text) {
+            this.title = title;
+            this.text = text;
+          }
+
+          CreateByClick.prototype.rendPost = function() {
+            var titleContainer, textContainer;
+            titleContainer = document.createElement('div');
+            textContainer = document.createElement('div');
+            document.body.appendChild(titleContainer);
+            document.body.appendChild(textContainer);
+            titleContainer.innerHTML = this.title;
+            textContainer.innerHTML = this.text;
+          }
+
+           button.addEventListener("click", function() { firstPost.rendPost() })
+
+           var firstPost = new CreateByClick ("First", "My first message");
+
+        </script>
+  </body>
+</html>

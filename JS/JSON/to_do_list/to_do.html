@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo List</title>
+	<script type="text/javascript" src="xhr.js"></script>
+	<style>
+
+	.hidden {
+    	display: none;
+    }
+
+	.task_block {
+		border: 1px solid grey;    
+    	width: 450px;
+    	margin: 15px;
+    	padding: 20px;
+	}
+
+	.inputs {
+		width: 400px;
+	}
+
+	.paragraphs {
+		width: 400px;
+	}
+	
+	.buttons {
+    	display: inline-block;
+    	margin: 15px 15px 5px 0px;
+    }
+
+    .cancelButton {
+    	margin-right: 10px;
+    }
+
+	.task_name {
+		background-color: orange;
+	}
+
+	.task_name_done {
+		background-color: grey;
+    }
+
+	.task_description, .task_name {
+    	border: 1px solid grey;    
+    	width: 400px;
+    }
+	.edit {
+        float: left;
+        margin-top: 16px;
+    }
+
+	.delete {
+        float: right;
+        margin-top: 16px;
+    }
+    .toggle {
+      width: 20px;
+      text-align: center;
+      float: left;
+    }    
+ 
+	</style>
+</head>
+<body>
+<div id="frame"></div>
+<script type="text/javascript" src="main_to_do.js"></script>	
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create new method in object prototype</title>
+</head>
+<body>
+	<script>
+	//создаем функцию конструктора Person (по сути, это реализация класса в JavaScript)
+		var Person = function (name, age) {
+			this.name = name;
+			this.age = age;
+		}
+		//присваиваем прототипу объекта Person новый метод sayHi, который будет возвращать в консоль определенный текст с аргументами переданными в функцию объекта Person через ключи доступа в контексте объекта с помощью ключевого слова this
+		Person.prototype.sayHi = function () {
+			console.log("Hi, I'm " + this.name + ". I'm " + this.age + "years old.");
+		}
+
+		var joe = new Person ("Joe", 25); //объект joe, созданный с помощью конструктора Person, который мы определили посредством присвоения var Person функции и обозначенным в ней ключам доступа к контексту объекта (превращенным в ключи с помощью ключевого слова this)
+		joe.sayHi; // к только что созданному объекту joe мы применяем метод sayHi, который был создан и присвоен нами самими вручную для прототипа объекта Person (функция тоже является объетом в JS). 
+		//Таким образом мы можем применять метод sayHi с любым объектом, созданным конструктором Person с заданными аргументами (которые соответствуют параметрам функции-конструктора)
+		var kseniya = new Person ("Kseniya", 33);
+		kseniya.sayHi;
+		var john = new Person ("John", 39)
+		john.sayHi;
+
+		var obj = {
+			name: "Oksana",
+			age: 33
+		}
+
+		console.log(Person.prototype.sayHi.call(obj));
+
+		
+		
+		//пишем конструктор объекта greeting и добавляем метод ask к прототипу greeting, который будет переспрашивать, действительно ли субъекту из вновь созданного объекта, к которому будет вызван этот метод, столько лет, сколько передано в качестве аргумента
+		var greeting = function (name, age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		greeting.prototype.ask = function () {
+				return "Hello " + this.name + "! Are you really " + this.age + " ?";
+		}
+
+		document.write(greeting.prototype.ask.call(obj)); //выводим результат метода ask, примененного к переданному объекту в качестве аргумента метода call()
+
+	</script>
+	
+</body>
+</html>

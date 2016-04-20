@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rating</title>
+</head>
+<body>
+	<fieldset>
+	<legend><b>Your current rating</b></legend>
+	<label for="rating">Input your score (0 to 100) to determine your final rating</label></br></br>
+	<input id="scores" type="number" min="0" max="100" placeholder=" none"/>
+	<button onclick="finalRate()">Check out</button>
+	<p id="final_rate"></p>
+	<!-- <input id="final_rate" type="number" placeholder="none" disabled> -->
+	</fieldset>
+	
+	<script>
+	function finalRate() {
+		var message="Your final rating is ";
+		var score = parseInt(Math.ceil(document.getElementById("scores").value));
+		var finalScore = score;
+		if (finalScore>=0 && finalScore<=59) {
+			document.getElementById("final_rate").innerHTML = message + "FX";
+		}
+		else if 
+			(finalScore>59 && finalScore<=64) {
+			document.getElementById("final_rate").innerHTML = message + "E";
+		}
+		else if 
+			(finalScore>64 && finalScore<=74) {
+			document.getElementById("final_rate").innerHTML = message + "D";
+		}
+		else if 
+			(finalScore>74 && finalScore<=84) {
+			document.getElementById("final_rate").innerHTML = message + "C";
+		}
+		else if 
+			(finalScore>84 && finalScore<=94) {
+			document.getElementById("final_rate").innerHTML = message + "B";
+		}
+		else if 
+			(finalScore>94 && finalScore<=100) {
+			document.getElementById("final_rate").innerHTML = message + "A";
+		}
+		else {document.getElementById("final_rate").innerHTML = "Your input is inappropriate";}		
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+	div {		
+		width: auto;
+		height: auto;
+		margin: 25px;
+		border: 1px solid green;
+	}
+	</style>
+</head>
+<body>
+	<p>Open DevTools (F12) to observe in a console how buubling and capturing functions work</p>
+	<div>
+		<div id="divOne"> 1
+			<div id="divTwo"> 2
+				<div id="divThree"> 3</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+	var e;
+		var divFirst = document.getElementById("divOne");
+		divFirst.addEventListener("click", function (e) { console.log(e); console.log("I am div1")}, true); //capture
+		var divSecond = document.getElementById("divTwo");
+		divSecond.addEventListener("click", function (e) { e.stopPropagation(); console.log(e); console.log("I am div2")}, true); //capture
+		var divThird = document.getElementById("divThree");
+		divThird.addEventListener("click", function (e) {console.log(e); console.log("I am div3")}, true); //capture
+
+		// var divFirst = document.getElementById("divOne");
+		// divFirst.addEventListener("click", function () {console.log("I am div1")}); //false - по умолчанию, bubbling
+		// var divSecond = document.getElementById("divTwo");
+		// divSecond.addEventListener("click", function () {console.log("I am div2")}); //false - по умолчанию, bubbling
+		// var divThird = document.getElementById("divThree");
+		// divThird.addEventListener("click", function () {console.log("I am div3")}; //false - по умолчанию, bubbling
+
+	</script>
+</body>
+</html>

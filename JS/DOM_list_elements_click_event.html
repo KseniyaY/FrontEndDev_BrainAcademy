@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML DOM List HTML Elements with JS</title>
+</head>
+<body>
+	<div id="d1"> div with id = "d1": 
+	     <ol id="ol1">
+	       <li id="li1">Item 1</li>
+	       <li id="li2">Item 2</li>
+	     </ol>
+	</div>
+	<p>List all IDs of elements containing in div with id = "d1" (use JS script): </p>
+	<p id="demo"></p>
+
+	<p id="display">This text will be displayed below one more time as soon as you click the button</p>
+	<p id = "forJSButton"></p>
+
+	<div id="myDiv" style="background-color: lightgreen;"></div>
+
+<script>
+	var div = document.getElementById('d1');
+	var elems = div.getElementsByTagName('*');
+	var text = document.getElementById('demo');
+	for(var i=0; i<elems.length; i++) {text.innerHTML += elems[i].id + "<br>"};
+
+	var button = document.getElementById("forJSButton");
+	button.innerHTML = '<form id="myform"><input type="button" value="Click me"/></form>';
+	//добавляем в div с id = forJSButton кнопку, при нажатии которой мы выведем в div с id = myDiv текст из div с id = display
+
+	//Пишем функция для события onclick
+	button.addEventListener("click", function () { 
+		var displayText = document.getElementById('display'); //сохраняем метод поиска элемента с нужным id в переменную
+		var putText = document.getElementById('myDiv');
+		return putText.innerHTML += displayText.innerHTML + "<br>"; /* возвращаем значение переменной путем перезаписи контента (innerHTML)
+	 	из одной переменной в другую */
+	});
+
+
+</script>
+</body>
+</html>

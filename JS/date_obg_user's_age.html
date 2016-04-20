@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Function of user's age determination</title>
+</head>
+<body>
+	<script>
+	
+	//Написать функцию, которая возвращает возраст человека, принимая строку (введенную через prompt) с точной датой рождения. Выполните необходимые проверки введенного значения, в случае, если введено неправильное значение - вывести ошибку. Предусмотреть вариант ввода только года рождения, при этом все равно вывести ошибку и результат выполнения функции.
+
+	document.write("You are " + age(new Date(prompt("When were you burn? Please input appropriate date format (mm/dd/yy or mmm dd yyyy)"))) + " years old.");
+
+	function age(x) {
+		var today = new Date();
+		var birthday = x;
+		var years = today.getUTCFullYear() - birthday.getUTCFullYear();
+		var reg = /\d{2,4}/;
+		// var reg1 = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g; //
+		// var reg2 = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/; //for validation of zero-padded and slash-separated dates (e.g. "08/08/2013")
+		// var reg3 = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/; //for validation of zero-padded and slash (or hyphen) -separated dates (e.g. "08/08/2013")
+		// var reg4 = /^((0[1-9]|[12][0-9]|3[01])(\/)(0[13578]|1[02]))|((0[1-9]|[12][0-9])(\/)(02))|((0[1-9]|[12][0-9]|3[0])(\/)(0[469]|11))(\/)\d{4}$/;
+		// var reg5 = /[0-9]{2}[/][0-9]{2}[/][0-9]{4}$/;
+		// var reg6 = /^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$/g;
+
+		try {
+			if (isNaN(x)) {
+				throw "The date was entered not in date format. Please, input a date as mm/dd/yy or mmm dd yyyy formats.";
+			}
+			if (today < birthday) {
+				throw "The premature date was entered. It appears that you weren't born yet. Please, check entered date.";	
+			}
+			if (x = reg) {
+				throw "Please enter a full date (month, date, year)";
+			}	
+		}
+		catch (error) {
+			alert(error);
+		}
+		finally {
+			return years;
+		}
+	}
+	
+</script>
+</body>
+</html>

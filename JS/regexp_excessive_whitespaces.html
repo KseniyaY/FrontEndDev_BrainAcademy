@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Replace excessive whitespaces with Regular Expression</title>
+</head>
+<body>
+	<script>
+		var str = "This   line contains  some excessive whitespaces  to be  fixed."; //инициируем переменную со строкой, в которой содержатся лишние пробелы
+		document.write(str + "<br>" + "Since excessive whitespaces aren't reflected in HTML-document/in browsers, in the following line, passed by function, we can see those places where they were putted into."); //вывод значения переменной в HTML-документ для демонстрации
+		document.write("<br>" + delExcSpace(str) + "<br>" + "There are demonstrative underscores (instead of single whitespace) which have replaced all whitespaces with excessive ones." + "<br>"); // вызов функции, убирающей пробелы, с передачей в качестве аргумента нашей переменной со строкой и отображение новой строки в HTML-документе
+
+		str = "It's another line to  demonstrate the    function's action  depending   on  the passing string." //перезапись в переменную нового строки, в которой содержатся лишние пробелы
+		document.write("<br>" + str); //вывод значения переменной в HTML-документ для демонстрации
+		document.write("<br>" + delExcSpace(str)); //повторный демонстрационный вызов функции, убирающей пробелы, с передачей в качестве аргумента нашей перезаписанной переменной с уже другой строкой и отображение преобразованной функцией строки в HTML-документе
+ 
+		//описание функции по замене лишних пробелов с помощью метода replace и паттерна/шаблона регулярного выражения (RegExp)
+		function delExcSpace(x) {
+			var str2 = x.replace(/\s{2,}/g,"_");//символ нижнего подчеркивания применен для наглядного примера, а именно подчеркивания тех мест, где прежде были лишние пробелы;
+			//   /\s{2,}/g такое регулярное выражение указывает на то, что замене подлежат все те места, где пробел имеет как минимум 2 вхождения (или встретился как минимум 2 раза), второй аргумент пропущен, т.к. не ограничен максимальным числом вхождений. Фигурные скобки {} позволяют описать условия вхождения для символа s, которые и "ловит" пробелы. А буква g - это флаг или модификатор, который указывает, что мы рассматриваем случаи совпадения с паттерном более, чем 1 раз, а именно во всей строке полностью. 
+			return str2; //результатом функции должно быть возвращение новой трансформированной строки.
+		}
+
+	</script>
+	
+</body>
+</html>

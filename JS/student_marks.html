@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS 5 Subject & Marks</title>
+</head>
+<body>
+<script>
+	//Prompt the user to input the marks of 5 subjects of a student. Display if he has passed in each subject if mark is above 60 else use break for 
+	var marks;
+	var subjects =5;//5 subjects
+	i=1;
+	for (;i<=subjects;){
+		marks = parseInt(prompt("Input your marks of your 5 main subjects"));
+		if (marks>60) {
+			alert("You have passed this subject");
+		}
+		else {
+			alert("You haven't passed this subject. Sorry, it's not enough to complete the entire course. Make your test again");
+			break;//break the loop completely
+		}
+		i++;	
+	}
+
+
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "description": "Еще одна проверка после удаления функции",
+      "name": "Привет",
+      "dueDate": "2016-04-05T00:00:00.000Z",
+      "id": 18
+    },
+    {
+      "description": "Проверка",
+      "name": "Привет",
+      "dueDate": null,
+      "id": 19,
+      "isDone": "undefined"
+    },
+    {
+      "description": "Давай еще раз",
+      "name": "Привет",
+      "dueDate": "2017-02-15T00:00:00.000Z",
+      "id": 20,
+      "isDone": "undefined"
+    },
+    {
+      "name": "The next task",
+      "description": "Something senseless",
+      "dueDate": "2016-03-15T00:00:00.000Z",
+      "id": 21
+    },
+    {
+      "name": "fddd",
+      "description": "trsjrjwrj",
+      "dueDate": "2016-04-26T00:00:00.000Z",
+      "id": 22
+    }
+  ]
+}

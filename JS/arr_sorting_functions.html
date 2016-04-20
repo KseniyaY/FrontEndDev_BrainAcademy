@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array sorting functions</title>
+		<script>
+
+		// Создание массива с рандомными числами
+
+		function CreateRandomArray(a) {
+			var arr = [];
+			if (isNaN(parseInt(a)) || a < 0) {
+				console.log("Enter number");
+			}
+			for (var i = 0; i < a; i++) {
+			arr.push(Math.round(Math.random() * 100));	
+			}
+			return arr; 
+		}
+		array = CreateRandomArray;
+		console.log(array(10));
+
+		// Поиск наибольшего числа в массиве
+
+		var arr;
+	
+		arr = array(10);
+		max = getMax(arr);
+
+		console.log(arr);
+		console.log(max);
+
+		function getMax(arr) {
+			var max = 0;
+			for (i in arr) {
+				if (arr[i] > max) {
+					max = arr[i];
+				}
+			}
+			return max;
+		}
+
+		// Поиск наименьшего числа в массиве
+
+		var arr1;
+
+		arr1 = array(10);
+		min = getMin(arr1);
+
+		console.log(arr1);
+		console.log(min);
+
+		function getMin(arr1) {
+			var min = arr1[0];
+			for (i in arr1) {
+				if (arr1[i] < min) {
+					min = arr1[i];
+				}
+			}
+			return min;
+		}
+
+		// Быстрая сортировка (QuickSort) по возрастанию
+
+		var arr2;
+
+		arr2 = array(10);
+		qsortMax = QuickSortMax(arr2);
+		console.log(arr2);
+		console.log(qsortMax);
+
+		function QuickSortMax(arr2) {
+			if (arr2.length == 0) return [];
+			var a = [], b = [], p = arr2[0];
+			for (var i = 1; i < arr2.length; i++){ 
+				if (arr2[i] < p) a[a.length] = arr2[i];
+				else b[b.length] = arr2[i];
+				}
+			return QuickSortMax(a).concat(p,QuickSortMax(b));
+			}
+
+		// Быстрая сортировка (QuickSort) по убыванию
+
+		var arrQ;
+
+		arrQ = array(10);
+		qsortMin = QuickSortMin(arrQ);
+		console.log(arrQ);
+		console.log(qsortMin);
+
+		function QuickSortMin(arrQ) {
+			if (arrQ.length == 0) return [];
+			var a = [], b = [], p = arrQ[0];
+			for (var i = 1; i < arrQ.length; i++){ 
+				if (arrQ[i] > p) a[a.length] = arrQ[i];
+				else b[b.length] = arrQ[i];
+				}
+			return QuickSortMin(a).concat(p,QuickSortMin(b));
+			}
+
+		// Пузырьковая сортировка по возрастанию 
+
+		var arr3;
+
+		arr3 = array(10);
+		console.log(arr3);
+
+		bubbleMax = BubbleSortMax(arr3);
+		console.log(bubbleMax);
+
+		function BubbleSortMax(arr3) { 
+			var n = arr3.length;
+			for (var i = 0; i < n; i++) { 
+				for (var j = 0; j < n; j++){ 
+					if (arr3[j+1] < arr3[j]) { 
+						var t = arr3[j+1]; 
+						arr3[j+1] = arr3[j]; 
+						arr3[j] = t; 
+					}
+				}
+			} return arr3;
+		}
+
+		// Пузырьковая сортировка по убыванию
+
+		var arr4;
+
+		arr4 = array(10);
+		console.log(arr4);
+
+		bubbleMin = BubbleSortMin(arr4);
+		console.log(bubbleMin);
+
+		function BubbleSortMin(arr4) { 
+			var n = arr4.length;
+			for (var i = 0; i < n; i++) { 
+				for (var j = 0; j < n; j++){ 
+					if (arr4[j-1] < arr4[j]) { 
+						var t = arr4[j-1]; 
+						arr4[j-1] = arr4[j]; 
+						arr4[j] = t; 
+					}
+				}
+			} return arr4;
+		}
+
+		// Сортировка выбором по возрастанию
+
+		var arrS;
+
+		arrS = array(10);
+		console.log(arrS);
+
+		selectMax = SelectionSortMax(arrS);
+		console.log(selectMax);
+
+		function SelectionSortMax(arrS) {
+			var n = arrS.length;
+			for (var i = 0; i < n-1; i++){ 
+				var min = i;
+				for (var j = i+1; j < n; j++) { 
+					if (arrS[j] < arrS[min]) min = j; 
+				} var t = arrS[min]; arrS[min] = arrS[i]; arrS[i] = t;
+			} return arrS;
+		}
+
+		// Сортировка выбором по убыванию
+
+		var arrS2;
+
+		arrS2 = array(10);
+		console.log(arrS2);
+
+		selectMin = SelectionSortMin(arrS2);
+		console.log(selectMin);
+
+		function SelectionSortMin(arrS2) {
+			var n = arrS2.length;
+			for (var i = 0; i < n; i++){ 
+				var min = i;
+				for (var j = i+1; j < n; j++) { 
+					if (arrS2[j] > arrS2[min]) min = j; 
+				} var t = arrS2[min]; arrS2[min] = arrS2[i]; arrS2[i] = t;
+			} return arrS2;
+		}
+
+		// Сортировка методом .sort по возрастанию
+
+		var arrSort;
+
+		arrSort = array(10);
+		console.log(arrSort);
+		console.log(arrSort.sort(FooSortMax));
+
+		function FooSortMax(a,b) {
+			if (a < b) return -1;
+			if (a > b) return 1;
+			return 0;
+			}
+
+		// Сортировка методом .sort по убыванию
+
+		var arrSortMin;
+
+		arrSortMin = array(10);
+		console.log(arrSortMin);
+		console.log(arrSortMin.sort(FooSortMin));
+
+		function FooSortMin(a,b) {
+			if (b < a) return -1;
+			if (b > a) return 1;
+			return 0;
+			}
+
+
+		</script>
+	</head>
+	<body>
+	<br>Press F12 to open DevTools
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+</head>
+<body>
+<script>
+// Build a numerical calculator. 
+//Ask user for two inputs (numbers). Ask user for what function to perform:
+// 1. Addition, 
+// 2. Subtraction, 
+// 3. Multiplication
+// 4. Division.
+// Display the result accordingly. And loop the code while user prompts – “That’s all”
+
+	var value1 = "";
+	var value2 = "";
+	var action;
+	var result;
+	var i = 0;
+	var stop;
+	
+	for (;i!=stop;) {
+		value1 = parseFloat(prompt("Input any number here"));
+		action = prompt("What action do you want to perform? Input +, -, / or *");
+		value2 = parseFloat(prompt("Input another number to perform action with that one mentioned above"));
+		switch(action) {
+			case "+":
+				result=value1+value2;
+				break;
+			case "-":
+				result=value1-value2;
+				break;	
+			case "/":
+				result=value1/value2;
+				break;
+			case "*":
+				result=value1*value2;
+				break;	
+			default: result="I'm a very simple calculator and I can't do that. I'm sorry!"			
+		}
+		alert(result);
+		//Inactive and less comfortable way to stop the calculation according the assignment:
+		// stop = prompt("If you want to complete computations, then input 'That's all'");
+		// if(stop =="That's all"){
+		// 	alert("Thank you for being with us! Bye!");
+		// 	break;
+		// }
+
+		//IMHO, it's more natural way to interact with user
+		stop = confirm("Do you want to complete computations?");
+		if(stop==true){
+			alert("Thank you for being with us! Bye!");
+			break;
+		}
+		else {
+		alert("I'm glad I'm useful");	
+		}
+		i++;
+	}
+
+
+
+
+
+
+</script>
+	
+</body>
+</html>

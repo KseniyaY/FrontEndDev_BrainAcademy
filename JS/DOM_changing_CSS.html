@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Handle CSS with JS</title>
+	<style>
+		div {
+			margin: 0 auto; 
+		}
+
+		#button {
+			height: 100px;
+			width: 175px;
+			color: white;
+			background-color: purple;
+			margin: 0 auto;
+		}
+
+		.textWrapper {
+			background-color: orange;
+			color: white;
+			font-size: 17px;
+			text-align: center;
+			opacity: 1;
+			/*-webkit-transition: opacity 7s linear; */
+		}
+
+		.foldUnfold {
+			/*visibility: hidden;*/
+			background-color: lightgreen;
+			opacity: 0.25;
+			-webkit-transition: opacity 7s linear; 
+		
+		}
+
+	</style>
+</head>
+<body>
+	<div class="forButton">
+		<button id="button" type="button">Click me</button>
+		<input id="color" type="color">
+		<label><input type="range" id="range">Range: </label>
+	</div>
+	<div class="textWrapper">
+		<p>You can read this text because you have clicked the button above</p>
+	</div>
+
+
+	
+	<script>
+		var foldButton = document.getElementById("button"); //найти в документе элемент button с id ="button";
+		//измени заливку цвета параграфа и "расствори" параграф до полного исчезновения через transition при нажатии на button, а потом выведи снова на экран параграф с первоначальным стилем при повторном нажатии мыши
+		var clickHandler = function (event) {
+			var change  = document.querySelector(".textWrapper");
+			//вместо условного выражения if можно применить toggle
+			if (change.classList.contains("foldUnfold")) {
+				change.classList.remove("foldUnfold");
+			} else {	
+			change.classList.add("foldUnfold");
+			}
+			console.log(event);
+		};
+
+		foldButton.addEventListener("click", clickHandler); //запустить изменение стиля параграфа с классом textWrapper при клике на мышь
+		
+		var color  = document.getElementById("color"); //найти в документе элемент input с type ="color";
+		//измени цвет параграфа с классом textWrapper путем выбора цвета из input с type ="color";
+			var colorHandler = function (event) {
+			var changeColor  = document.querySelector(".textWrapper");
+			var colorValue = color.value;
+			changeColor.style.color = colorValue;
+			console.log(event);
+		};
+
+	
+		color.addEventListener("change", colorHandler); // запустить изменение стиля параграфа с классом textWrapper при выборе цвета из input с type ="color" (используя событие change);
+		
+
+		var range = document.getElementById("range");
+
+		range.addEventListener("change", function (e) {
+   		console.log(e);
+   			document.getElementsByClassName("textWrapper")[0].style.fontSize = this.value + "px";
+  		});
+
+	</script>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create an Object constructor with auto-refreshing time of some edited post</title>
+</head>
+<body>
+
+<p>Open DevTools (F12) to observe script actions in a console</p>
+<p>Написать конструктор, создающий обьект с тремя свойствами - название, сообщение, дата. Добавить метод, который позволяет изменять сообщение, при этом обновляя дату.</p>
+
+
+
+<script>
+
+//Ниже несколько вариантов кода. Неактивный код - работающий только в определенной мере.
+
+
+// создаем конструктор объекта post (прототипный объект), который содержит три свойства, 2 из которых текстовые и получаемые из аргументов, а третье - изначально изначально созданный нами "локальный" метод прототипа, позволяющий возвращать текущую дату вновь созданного/ измененного объекта;
+	// function post(headline, message) {
+	// 	var date = 
+	// 	this.headline= headline; //с помощью ключевого слова this создаем контекст для объектов, обращающихся через прототип post;
+	// 	this.message = message;
+	// 	this.date = function () {
+	// 		return new Date().toLocaleString();
+	// 	}
+	// }
+
+	//или иной способ последующего ДОБАВЛЕНИЯ метода к прототипу объекта person:
+
+	// function post(headline, message) {
+	// 	this.headline= headline; //с помощью ключевого слова this создаем контекст для объектов, обращающихся через прототип post;
+	// 	this.message = message;
+	// }
+	
+	// ДОПОЛНИТЕЛЬНО к уже созданному прототипу мы имеем возможность постфактум добавлять методы с помощью следующего синтаксиса:
+	// post.prototype.date = function () {
+	// 		return new Date().toLocaleString();
+	// 	}
+
+	//создаваем новые переменные и сохраняем в них новые объекты с прототипными свойствами с помощью ключевого слова new и имени прототипа post. В скобках указываются аргументы для функции конструктора объекта, которые благодаря ключевому слову this становятся контекстными значениями свойств объекта в соответствии с порядком, заданным в прототипе post
+
+
+	// var post1 = new post ("Test", "Let's test our function");
+	// console.log("Title: " + post1.headline + " Message: " + post1.message + " Date: " + post1.date()); //выводим в консоль значения свойств  вновь созданного объекта, применяя синтаксис доступа к свойствам объекта
+	
+	// post1.message = "Let's check whether our date are refreshed if we edit our message";
+	//задаем тайм аут к функции, которая будет передавать в консоль новые значения свойства объекта, в том числе обновленную дату
+	// setTimeout(function () {
+	// 	console.log("Title: " + post1.headline + " Message: " + post1.message + " Date: " + post1.date())}
+	// 	, 1000); //время таймаута = 1000 миллисекунд
+
+	//пробуем другой способ создания объекта с помощью стандартного литерала объекта
+	// var post2 = {
+	// 		topic: "Access prototype's properties",
+	// 		SMS: "Let's check another method of calling prototype properties"
+	// }
+	// //Но теперь применяем к этому объекту метод date прототипа post с помощью синтаксиса prototype name.ptototype.method name.call(current object name). 
+	// //Этот пример демонстрирует, как к любому объекту мы можем применить локальный метод какого-либо созданного нами прототипного объекта;
+
+	// console.log("Theme: " + post2.topic + " SMS: " + post2.SMS + " Date: " + post.prototype.date.call(post2)); //здесь мы выводим объект в документ, обращаясь к методу прототипа через call(), другими словами вызывая метод прототипа для обработки передаваемого объекта;
+
+
+	//пишем более полноценный конструктор объекта, для которого определяем свойство для получения и установки даты сообщения
+	function post(headline, message) {
+		this.headline= headline; //с помощью ключевого слова this создаем контекст для объектов, обращающихся через прототип post;
+		this.message = message;
+		var date = new Date(); //задаем переменную, которая будет генерировать текущую дату автоматически, а далее через метод объектов defineProperty этой переменной контекст this и описываем для date, как уже свойства в контексте объекта, свои собственный методы get (получает данные) и set (передает/устанавливает данные). Для этих методов прописываем функции. Одна из них  конвертировать полученное значение даты в в строку в локальном формате даты, вторая - снова перезаписывает в date новый объект Date с текущией автоматически сгенерированной датой, а иначе нам будет добавляться уже переведенное в строку значение даты, которое мы получили из get 
+		Object.defineProperty(this, "date", { 
+			get: function () { return date.toLocaleString() },
+			set: function () { date = new Date()}}
+			);
+	}
+
+	var post1 = new post ("Test", "Let's test our function");
+	console.log("Title: " + post1.headline + " Message: " + post1.message + " Date: " + post1.date); //выводим в консоль значения свойств  вновь созданного объекта, применяя синтаксис доступа к свойствам объекта
+
+
+	post1.message = "Let's check whether our date are refreshed if we edit our message"; //перезаписываем текст сообщения в свойство объекта message
+	//с помощью отложенного вызова функции (для демонстрации изменения значения даты в секундах) выводим в консоль отредактированный текст сообщения с обновленной датой 
+	setTimeout(function () {
+  		post1.date = "";
+  		console.log("Title: " + post1.headline + " Message: " + post1.message + " Date: " + post1.date);
+ 	}, 2000);
+
+	
+	//Тот же самый способ, но с проверкой в методе set на наличие задаваемой нами даты 
+	var Post = function (header, message) {
+		var date = new Date();
+		this.header = header;
+		this.message = message;
+		Object.defineProperty( this, "date", {
+			get: function () { return date.toLocaleString() },
+			set: function (dateArg) {
+				if (!dateArg) {
+			 		date = new Date();
+			 	} //если аргумент в виде заданной нами самостоятельно даты отсутствует, то дата генерируется автоматически
+			 	else {
+			 		date = new Date(dateArg); //иначе создаем объект Date, основываясь на задаванной нами значении даты
+			 	} 
+			 }
+		})
+	}
+
+	var firstPost = new Post("Hello", "World!!");
+	console.log(" Title: " + firstPost.header + " Message: " + firstPost.message + " Date: " + firstPost.date);
+
+ 	firstPost.message = "Universe!";
+
+ 	//задаем тайм аут к функции, которая будет передавать в консоль новые значения свойства объекта, в том числе обновленную дату
+ 	setTimeout(function () {
+  		firstPost.date = "";
+  		console.log(" Title: " + firstPost.header + " Message: " + firstPost.message + " Date: " + firstPost.date);
+ 	}, 3500);
+ 
+ 	//для проверки срабатывания условия else в условном выражении задаем переменной определенную дату (а не текущую, генерируемую автоматически)
+ 	setTimeout(function () {
+  		firstPost.date = "2016, 05, 05";
+  		console.log(" Title: " + firstPost.header + " Message: " + firstPost.message + " Date: " + firstPost.date);
+ 	}, 4000);
+
+	
+</script>	
+</body>
+</html>

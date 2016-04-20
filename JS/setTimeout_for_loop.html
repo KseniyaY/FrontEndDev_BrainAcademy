@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create divs with js loop in some interval</title>
+</head>
+<body>
+	<script>
+	var timeout = 0;
+		for(var i = 0; i < 10; i++){
+	    setTimeout(
+	    function(){
+	    p = document.createElement('p');
+	    p.innerHTML = "Create new div in some interval";
+	    return document.body.appendChild(p);
+	    }, timeout)
+		timeout += 1000;
+		};
+	</script>
+</body>
+</html>

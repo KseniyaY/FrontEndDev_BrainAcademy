@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>An escaping button</title>
+	<style>
+		
+		#myButton {
+		    background-color: coral;
+		    color: white;
+		    height:75px;
+		    width:175px;
+		    position: relative; /*Иначе кнопка будет статичная и не станет поддаваться функции смещения на случайное число пикселей при наведении на нее мышью*/
+		}
+
+		#myButton2 {
+		    background-color: lightgreen;
+		    color: white;
+		    height:75px;
+		    width:175px;
+		    position: relative; /*Иначе кнопка будет статичная и не станет поддаваться функции смещения на случайное число пикселей при наведении на нее мышью*/
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<button id="myButton" onmousedown="escape()" onmouseover="escape()" onfocus="escape()">Try to click me</button>
+		<button id="myButton2" onmousedown="escape2(event)" onmouseover="escape2(event)" onfocus="escape2(event)">Try to click me</button>
+	</div>
+	<div id="demo"></div>
+
+<script>
+
+	var escButton = document.getElementById("myButton"), 
+	x1=0, y1=0;
+
+	function escape() { 
+	  x=Math.floor(Math.random()*500); //не стоит умножать рандомное число от 0 до 1 на слишком большое, чтобы увеличить расстояние, иначе это может привести к побегу мыши за рамки видимой зоны и привести к появлению скролл-бара
+	  y=Math.floor(Math.random()*400); 
+	  while (Math.abs(x1-x)<=70) {x=Math.floor(Math.random()*500);} 
+	  while (Math.abs(y1-y)<=50) {y=Math.floor(Math.random()*400);} 
+	  	x1=x; 
+	  	y1=y; 
+	  escButton.style.left = x+"px"; //мы добавляем новое свойство CSS через DOM-свойство style, задавая число из рандомной функции в виде отклонения влево от позиции в потоке (для этого мы установили position: relative)
+	  escButton.style.top = y+"px"; // мы добавляем новое свойство CSS через DOM-свойство style, задавая число из рандомной функции в виде отклонения вверх от позиции в потоке (для этого мы установили position: relative)
+	} 
+
+	var escButton2 = document.getElementById("myButton2"),
+	endX = 0,
+	endY = 0;
+
+	function escape2 (event) {
+		var startX = event.clientX;
+		var startY = event.clientY;
+		if (Math.abs(endX-startX)<=700 && (endY-startY)<=500) {startX = event.clientX; startY = event.clientY; } else {
+		startX = endX + Math.floor(Math.random()*200); startY = endY + Math.floor(Math.random()*100); }
+		escButton2.style.left = startX+"px";
+		escButton2.style.top = startY+"px";
+		console.log(event);
+	}
+
+
+
+</script>	
+</body>
+</html>

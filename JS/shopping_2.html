@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>E-cart</title>
+</head>
+<body>
+<fieldset>
+<legend class="eCart"><b>Заказать товар</b></legend></br>
+<select id="items">
+	<option value="scarf">Scarf</option>
+	<option value="hat">Hat</option>
+	<option value="gloves">Gloves</option>
+	<option value="gaiters">Gaiters</option>
+</select>
+<button onclick="price()">Узнать цену</button>
+<p id="price"></p>
+<!-- <input id="price" type="number" placeholder="0"> -->
+<input id="quantity" type="number" min="0" max="10" placeholder="0">
+<input type="button" value="Узнать сумму" onclick="sum()">
+<p id="sum"></p>
+<p id="submit"></p>
+
+
+<script>
+
+var item, p, q, costs;
+var button = document.createElement('button');
+
+function price() {
+	item = document.getElementById("items").value;
+	if (item == "scarf") {
+	 	p = 10;
+	 }
+	else if (item == "hat") {
+	 	p = 25;
+	 }
+
+	else if (item == "gloves") {
+	 	p = 15;
+	 }
+	 
+	else if (item == "gaiters") {
+	 	p = 20;
+	 }  
+
+	else {
+		document.getElementById("price").innerHTML="Вы не выбрали ни один товар";
+	} 
+	
+	document.getElementById("price").innerHTML = p + " UAH";
+}
+
+function sum() {
+
+	q = parseInt(document.getElementById("quantity").value);
+	costs = q * parseInt(p);
+	
+	document.getElementById("sum").innerHTML = "Сумма к оплате: " + costs + " UAH";
+	document.getElementById("submit").innerHTML = "<button type='button'>Подтвердить заказ</button>";
+	}
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM Demonstration</title>
+	<style>
+
+		#testDiv {
+			height: 25vh;
+			width: 25vw;
+			text-align: center;
+		}
+
+		.testClass {
+			height: 45vh;
+			width: 45vw;
+			text-align: right;
+			background-color: lightpink;
+		}
+
+		.testClassSecond {
+			height: 45vh;
+			width: 45vw;
+			text-align: right;
+			background-color: lightblue;
+		}
+
+	</style>
+</head>
+<body>
+
+<div id="testDiv">
+	<p>Demonstration of how we can handle DOM, changing CSS with JS. Click right here.</p>
+</div>
+
+<script>
+	var clickHandler = function (e) {
+		a  = document.getElementById("testDiv");
+		if (a.classList.contains("testClass")) {
+			a.classList.remove("testClass");
+		} else {	
+		a.classList.add("testClass");
+		}
+		console.log(e);
+	};
+
+testDiv.addEventListener("click", clickHandler);
+</script>
+
+</body>
+</html>
