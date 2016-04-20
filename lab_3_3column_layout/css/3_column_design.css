@@ -1,0 +1,265 @@
+			
+			* {
+				margin: 0;
+        		padding: 0;
+			}
+
+			body, html {
+			  height:100%;
+			 	}
+
+
+			 .wrap {
+				 position: relative;
+				 min-height:100%;
+				 /*именно min-height, иначе при обычном свойстве height:100; контент перекроет футер*/
+				}
+
+			.wrap_2 {
+				/*этот контейнер дублирует общий контейнер wrap с позиционированием relative,
+				 но при этом добляет педдинг непосредственно под футер и защищает его от влияния текста контента*/
+				 margin: 0 auto;
+				 min-height: 100%;
+				 /*именно min-height, иначе при обычном свойстве height:100; контент перекроет футер*/
+				 padding-bottom: 75px;
+				 /*чтобы футер был прижат, нам обязательно необходимо указать для него именно фиксированную высоту, а основному диву контента добавить свойство padding-bottom:75px (конкретно то фиксированное значение, которое мы выбрали для высоты футера)*/
+				}
+	
+			.header, .footer, .nav, .false_nav, .content { 
+		        margin: 0 auto;
+		        padding: 0;
+      		}
+
+      		.header, .footer, .nav, .false_nav {
+      			width: 100%;
+      		}
+
+					
+			 .header {
+				 min-height: 7%;
+				 background-color: #58b300;
+				 text-align: center;
+			 }		
+
+			 .nav {
+				 min-height: 4%;
+				 background-color: #d6d6c2;
+				 text-align: center;
+			 }
+
+			
+			.false1_content, .false2_content {
+				background-color: #c2d6d6;
+			}
+
+
+			.menu1_false, .menu2_false {
+			 	display: none;
+			 	position: relative;
+			 	vertical-align: top;
+			  	width: 50%;
+			  	height: 7%;
+			  	z-index: 2;
+			  	margin: auto;
+			   	font-family: Arial, sans-serif;
+			 	font-size: 17px;
+			 	line-height: 16px;
+			 	text-align: justify;
+			 	box-sizing: border-box;
+			 }
+
+			 .menu1_false li, .menu2_false li, .menu1_false a, .menu2_false a {
+			 	display: block;
+			 	list-style: none;
+			  	color: black;
+			 	line-height: 1.1em;
+			 	text-decoration: none;
+			 	font-size: 1em;
+			 	font-weight: bold;
+			 	padding-top: 10px;
+			 }
+			 
+			 .false1_list, .false2_list {
+			  	background-color: #c2d6d6;
+			 }
+
+
+			 .content {
+				width: 99%;
+				min-height: 100%;
+				position: relative;
+				font-size: 0em;
+				line-height: 0em;
+				/*Поскольку для menu и article используется display: inline-block то, 
+				как и любой другой inline-элемент, они будет иметь пробелы вокруг себя, что не очень хорошо.
+				Чтоб избавиться от них нужно родительскому элементу content указать font-size: 0px и line-height:0px;
+				и для всех дочерних элементов указать размер шрифта и высоту строки заново.*/
+							} 
+
+
+			.cb {
+				clear: both;
+				}	
+
+
+			 .footer {
+			 	position: absolute;
+			 	bottom: 0;
+			 	margin: auto;
+			 	height: 75px;
+			 	/*чтобы футер был прижат, нам обязательно необходимо указать для него именно фиксированную высоту, а основному диву контента добавить свойство padding-bottom:75px (конкретно то фиксированное значение, которое мы выбрали для высоты футера)*/
+			 	background-color: #737373;
+			 	text-align:center;
+			 	clear:both;
+			 		 }
+
+			.mask_left {
+			 	position: absolute;
+			 	z-index: 0;
+			 	top: 0;
+			 	left: 0%;
+			 	width: 23%;
+			 	height: 100%;
+			 	background-color: #c2d6d6;
+			 			 }
+
+			.mask_right {
+			 	position: absolute;
+			 	z-index: 0;
+			 	top: 0;
+			 	right: 0%;
+			 	width: 23%;
+			 	height: 100%;
+			 	background-color: #c2d6d6;
+			 }
+				
+			 .menu1, .menu2, .article {
+			 	padding: 25px 10px 15px 10px;
+			 	display: inline-block;
+			 	position: relative;
+			 	vertical-align: top;
+			 	min-height: 100%;
+			 	z-index: 1;
+			  	margin: auto;
+			   	font-family: Arial, sans-serif;
+			 	font-size: 17px;
+			 	line-height: 16px;
+			 	text-align: justify;
+			 	box-sizing: border-box;
+			  				 }
+
+			 .article {
+			 	 width: 50%;
+			 	 margin-left: 2%;
+			 	 background-color: white;
+					 }
+
+			 .menu1 {
+			 	float: left;
+			 	width: 23%;
+				background-color: #c2d6d6;
+				z-index: 1;
+			 }
+
+			.menu2 {
+				float: right;
+				width: 23%;
+				background-color: #c2d6d6;
+				z-index: 1;
+			 }
+
+	
+			.menu1_content, .menu2_content, .menu1_list, .menu2_list, .menu1_list a, .menu2_list a {
+			 	display: block;
+			 	width: 100%;
+			 	margin: auto;
+			 	list-style: none;
+			 	text-align: center;
+			 	line-height: 1.1em;
+			 	text-decoration: none;
+			 	font-size: 1em;
+			 	color: black;
+			 	font-weight: bold;
+			 	padding-top: 10px;
+			 }
+
+			 h2 {
+			 	text-align: center;
+			 	font-size: 1em;
+			 }
+
+			 p {
+			 	text-align: justify;
+			 	padding: 10px;
+			 }
+
+			 @media all and (max-width: 1300px) {
+			 	
+			 	.header, .nav, .footer, .content, .menu, .article 
+			 	{
+			 		font-size: 0.95em;
+			 	}
+
+			 	.mask_left, .mask_right {
+			 		display: none;	
+			 	}
+
+			 	.false1_content {
+			 		position: relative;
+					border-right: 2px solid white;
+			 	}
+
+
+			 	 .menu1_false {
+			 		display: inline-block;
+			 		position: relative;
+			 		z-index: 5;
+			 		box-sizing: border-box;
+			 	}
+
+			 	.menu2_false {
+			 		display: inline-block;
+			 		position: absolute;
+			 		left: 50%;
+			 		z-index: 5;
+			 		box-sizing: border-box;
+			 	}
+
+			 	.menu1, .menu2 {
+			 		display: none;
+			 	}
+
+			 	.false1_list, .false2_list {
+			 		display: none;
+			 		 	}
+			 	
+			 	
+			 	.article {
+			 		position: relative;
+			 		margin: auto;
+			 		width: 100%;
+			 		z-index: 1;
+			 		/*чтобы спрятать бекграунд инлайн-блок дива, который согласно расположению в своем HTML-потоке идет последний и стремится приклеиться к футеру*/
+			 		left: 0;
+			 		top: auto;
+			 		height: auto;
+			 		 	}
+			 				 		
+			 	.false1_content li:hover .false1_list, .false2_content li:hover .false2_list {
+			 		display: inline-block;
+			 		/*position: absolute;*/
+			 		z-index: 4;
+			 		margin: auto;
+			 		height: auto;
+			 		width: 100%;
+			 		font-size: 1em;
+			 		text-align: center;
+			 		padding-bottom: 10px;
+			 	}	
+
+			 	.false1_content > li {
+			 	text-decoration: none;
+			 } 
+
+			 	}
+ 		 
