@@ -1,0 +1,159 @@
+<!DOCTYPE HTML5>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="" type="" src="">
+		<style>
+
+		body {
+			width: 1340px;
+			height: 671px;
+			height: auto;
+			text-align: center;
+			margin: 0px auto;
+				}
+		
+		.wrap {
+			margin: 0px auto;
+			width: 100%;
+			min-height: 670px;
+		}
+
+		.logo {
+			margin: 15px auto;
+			padding-top: 112px;
+				}
+
+		#logo_sub {
+		    color: #4285f4;
+		    font-size: 1.1em;
+		    position: relative;
+		    left: 748px;
+		    top: -35px;
+		    width: 0;
+		}
+
+
+		/* Сюда добавлены кнопки в виде бекграунда в качестве стилистического, а не функционального решения,
+		а чтобы привязать к ним ссылки или скрипт, то лучше добавить img в div со смещением и  z-index (см. ниже в .nav_google)*/
+		input {
+			background: url() no-repeat right;
+			width: 670px;
+			height: 38px;
+			padding: 10px;
+			margin: 0 auto;
+					}
+
+		.nav_google {
+			position: relative;
+			top: -32px;
+			left: 315px;
+			z-index: 1;
+		}	
+
+				
+		.text_search {
+			color: #bbb;
+		    font-size: 16px;
+		    left: 9px;
+		    margin-top: 1px;
+		    right: 9px;
+		    visibility: visible;
+		    white-space: nowrap;
+		}
+			
+		.bookmarks_generic {
+			margin: 0 auto;
+			text-align: center;
+			width: 700px;
+			font-family: Helvetica, sans-serif;
+			font-size: 12px;
+						}
+
+	
+		.bookmarks {
+			width: 146px;
+			height: 146px;
+			border: 1px solid #999999;
+			border-radius: 2px;
+			background-color: #e6e6e6;
+			display: inline-block;
+			margin: 8px 6px;
+					}
+
+		.miniature {
+			background: white;
+			border-radius: 2px;
+			color: #bfbfbf;
+			margin: 2px;
+			width: 140px;
+			height: 115px;
+			position: relative;
+			top: 14px;
+			left: 1px;
+			z-index:1;
+			display: block;
+		}			
+		p {
+			padding-top: 20px;
+		}
+
+		div.bookmarks:hover {
+			border: 1px solid #323232;
+			box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.36);
+		}			
+
+		</style>
+
+	</head>
+	<body>
+		<div class="wrap">
+
+			<div class="logo">
+			<img src="https://www.google.com.ua/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google logo" width="272px" height="92px">
+			</div>
+			<div id="logo_sub">Украина</div>
+			
+			<div class="input">
+				<div>
+					<input class="text_search" type="text" placeholder="Введите поисковый запрос или URL">
+					</input>
+				</div>
+
+				<div>
+					<a href=""><img class="nav_google" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACrElEQVR42u2Xz2sTQRSAX8VSb1K8iNqKooJH2Ux6Ksn+iPQqxZMIehJB0do/IMhmQWsvHr2KSEGk0tSLIoWIYNUKij20F2/N7iaUZnYT0kYzzhMKs0HDJiTdLcwHDwKZSd63781LBiQSSW9JZdkhzfKm1Rz9mjZp/W9YdEU3vXv4HsQZ40FtNG36q5rls//Ej4tmbSS2T15Mvp3ExOPmEMQNbBtMMEyoljcFcQN7PqyAlqNfIG7gYQ0tYNIaxA1MrJPY3wImbUqBKAXSFv0tBSIVMOkvKRDtGKWN/T6FdqRAxFNoWwpEPIXqUqBT6ALU/UVgu8GW4GD3f6f9TRDYNJTDrk7YbtiqUumHwIYoUJuHERDAS0r4CvgFECgbY+cFAR7KT+g1POmCKFDNw6WggHc3fBtVb4CAoyauBgXIG+g1Xh5mRAGah6cggBd11fK/h7lOprIs0H6uRl6KAo5O7kOv4QmPiwJ4Jqqv4FiwCtXjvD2+tRmfK6kZ/ygI2HritK0rDVGgrClJ6DWMwYC/AGuCBMYcIC2V0CzvjmbRz3j3xUjn6CfeYreUJ2wQkGD75INPX1mFfsEFrrcIYCvdhC4paWQakxajpJMr0C9YFg54i7AsClRmh9/xnr0NHcInzZStk2aLwAcGMAD9pPIazvFKVDD5rdnhJeHLX5RTyRPQHpz5o66emMc9wdlPtvA8wF7Aq2BUHh1525qEo5JtR1WeOXpickO9cJIpyuD6xJmhYiZ5ytWSl3mlnuOaf+2zDaLDXmJrSgZ/MYVEugo+gSh+FkSBa4yd5Ul87DZ5XpFl/AyIEjzYjkau8WqshU2cr13HPbgX4gJOD97n465GZlyVvC9mSKloKI2iTnbwNT+gBX54H+IaXAtxJzE3ycSAFqSAFJACUkAikXD+AHj5/wx2o5osAAAAAElFTkSuQmCC" width="24px" height="24px" alt="google_nav"></a>
+				</div>
+			</div>
+
+				
+			<div class="bookmarks_generic">
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+				<div class="bookmarks">
+					<div class="miniature"><p>Bookmark_1</p></div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
