@@ -1,0 +1,27 @@
+div {
+  padding: 25px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin: 25px;
+}
+.alert-error {
+  border-color: #e8273b;
+  color: #99101f;
+  background-color: #ED5565;
+}
+.alert-success {
+  border-color: #87c940;
+  color: #537f24;
+  background-color: #A0D468;
+}
+.alert-attention {
+  border-color: #f4a911;
+  color: #986807;
+  background-color: #F6BB42;
+}
+.alert-info {
+  border-color: #2f80e7;
+  color: #12509e;
+  background-color: #5D9CEC;
+}
+/*# sourceMappingURL=alert_box.css.map */

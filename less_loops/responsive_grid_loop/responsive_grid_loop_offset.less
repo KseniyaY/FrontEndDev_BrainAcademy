@@ -1,0 +1,31 @@
+// simple loop which generates the column class names and
+//determines the width percentage of each one */
+
+.grid(@name; @columns; @index: 1) when (@index =< @columns) {
+
+.grid(@name; @columns; (@index + 1));
+  
+//we’re performing an increment within the loop. 
+//For this reason, we set the loop condition with (@index =< @columns)
+//(“while the index is less than or equal to the number of columns”) 
+//to prevent the iteration exceeding the column number
+  .@{name}-@{index} {
+    width: ( percentage(@index / @columns) );
+    & when ( @index < @columns ) {
+      &:extend(.column);
+    }
+  }  
+    // Generate the offset classes
+  & when ( @index < @columns ) {
+    .@{name}-offset-@{index} {
+      margin-left: percentage( (@index / @columns) );
+    }
+  }
+}
+
+
+
+@media only screen and (min-width: 360px) {
+	    .grid(small; 12);
+}
+// Here we’ve used our .grid() loop and passed to it the values small and 12.
